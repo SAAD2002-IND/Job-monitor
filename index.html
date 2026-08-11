@@ -30,8 +30,17 @@
   <button id="markSeen">Mark all as read</button>
 </div>
 <div id="list">Loading…</div>
+
+<div id="quicklinks" style="margin-top:24px; padding:14px 16px; background:#eef3fb; border-radius:8px; font-size:0.9rem;">
+  <strong>Also worth a manual glance</strong> (these can't be auto-monitored — LinkedIn/Indeed block scraping — but here are pre-filled searches, one click away):
+  <div style="margin-top:8px; display:flex; gap:10px; flex-wrap:wrap;">
+    <a href="https://www.linkedin.com/jobs/search/?keywords=research%20assistant%20OR%20teaching%20assistant%20OR%20data%20analyst&location=Qatar" target="_blank" rel="noopener">LinkedIn search</a>
+    <a href="https://www.indeed.com/jobs?q=research+assistant+OR+teaching+assistant+OR+data+analyst&l=Qatar" target="_blank" rel="noopener">Indeed search</a>
+    <a href="https://www.bayt.com/en/qatar/jobs/research-assistant-jobs/" target="_blank" rel="noopener">Bayt search</a>
+  </div>
+</div>
 <footer>
-  Sources checked: CMU-Qatar &amp; Georgetown Qatar (via Workday API, reliable), QCRI (reliable),
+  Sources checked: CMU-Qatar, Georgetown Qatar &amp; Texas A&amp;M Qatar (via Workday API, reliable), QCRI + QCRI AI portal,
   HBKU / Qatar University / UDST (best-effort — check these manually every couple of weeks too,
   since their listings are JavaScript-rendered and may not always be caught here).
   Updates once daily.
