@@ -47,8 +47,11 @@ def matches_keywords(title):
     return any(k in t for k in KEYWORDS)
 
 
-def fetch_workday(tenant, wd_host, site, institution, base_apply_url):
-    """Query a Workday CXS jobs API (used by CMU-Q and Georgetown Qatar)."""
+def fetch_workday(tenant, wd_host, site, institution, base_apply_url, location_contains=None):
+    """Query a Workday CXS jobs API (used by CMU-Q, Georgetown Qatar, TAMU system-wide).
+    location_contains: if set, only keep postings whose location text contains
+    this substring (case-insensitive) -- needed for system-wide feeds like TAMU
+    that list jobs across every campus, not just Qatar."""
     results = []
     api = f"https://{tenant}.{wd_host}.myworkdayjobs.com/wday/cxs/{tenant}/{site}/jobs"
     offset, limit = 0, 20
@@ -63,6 +66,9 @@ def fetch_workday(tenant, wd_host, site, institution, base_apply_url):
                 break
             for p in postings:
                 title = p.get("title", "")
+                loc = p.get("locationsText", "") or p.get("bulletFields", [""])[0]
+                if location_contains and location_contains.lower() not in loc.lower():
+                    continue
                 path = p.get("externalPath", "")
                 url = base_apply_url.rstrip("/") + path
                 if matches_keywords(title):
@@ -99,6 +105,11 @@ def fetch_qcri():
     return results
 
 
+def fetch_qcri_ai_portal():
+    """Best-effort second QCRI source -- separate AI-specific job portal."""
+    return fetch_generic_text_search("https://ai-job.qcri.org/", "QCRI (AI portal)")
+
+
 def fetch_generic_text_search(url, institution):
     """Best-effort for sites that render at least some job titles server-side.
     Sites that are fully JS-rendered (some HBKU/QU/UDST pages) may return
@@ -129,7 +140,13 @@ def collect_all():
             "georgetown", "wd1", "Georgetown_Qatar_Careers", "Georgetown Qatar",
             "https://georgetown.wd1.myworkdayjobs.com/en-US/Georgetown_Qatar_Careers",
         )),
+        ("Texas A&M Qatar", lambda: fetch_workday(
+            "tamus", "wd1", "System-wide_External", "Texas A&M Qatar",
+            "https://tamus.wd1.myworkdayjobs.com/en-US/System-wide_External",
+            location_contains="Qatar",
+        )),
         ("QCRI", fetch_qcri),
+        ("QCRI (AI portal)", fetch_qcri_ai_portal),
         ("HBKU", lambda: fetch_generic_text_search("https://www.hbku.edu.qa/en/careers", "HBKU")),
         ("Qatar University", lambda: fetch_generic_text_search("https://careers.qu.edu.qa", "Qatar University")),
         ("UDST", lambda: fetch_generic_text_search(
