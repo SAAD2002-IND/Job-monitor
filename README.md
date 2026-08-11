@@ -1,11 +1,11 @@
 # qatar-job-monitor
 
-I kept missing the CMU-Q Teaching Assistant reopening (twice now 🙃) so I built this
-to stop relying on remembering to check job boards. It scrapes a handful of Qatar
-university/research career pages every day and flags anything new that matches
-roles I'm actually going for — RA, TA, data analyst, that kind of thing.
+Manually checking career pages every few days wasn't working, so this does it
+instead. It pulls from a handful of Qatar university/research employers daily and
+surfaces anything new that matches the kind of roles I'm targeting — research
+assistant, teaching assistant, data analyst, that range
 
-Live page: `https://<your-username>.github.io/job-monitor/` (update this link once you know it)
+Live page: `https://saad2002-ind.github.io/Job-monitor/` 
 
 ## How it works
 
