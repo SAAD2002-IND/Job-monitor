@@ -120,21 +120,29 @@ def fetch_generic_text_search(url, institution):
 
 
 def collect_all():
+    sources = [
+        ("CMU-Qatar", lambda: fetch_workday(
+            "cmu", "wd5", "CMU", "CMU-Qatar",
+            "https://cmu.wd5.myworkdayjobs.com/en-US/CMU",
+        )),
+        ("Georgetown Qatar", lambda: fetch_workday(
+            "georgetown", "wd1", "Georgetown_Qatar_Careers", "Georgetown Qatar",
+            "https://georgetown.wd1.myworkdayjobs.com/en-US/Georgetown_Qatar_Careers",
+        )),
+        ("QCRI", fetch_qcri),
+        ("HBKU", lambda: fetch_generic_text_search("https://www.hbku.edu.qa/en/careers", "HBKU")),
+        ("Qatar University", lambda: fetch_generic_text_search("https://careers.qu.edu.qa", "Qatar University")),
+        ("UDST", lambda: fetch_generic_text_search(
+            "https://nonacademiccareers-udst.icims.com/jobs/search", "UDST"
+        )),
+    ]
     all_results = []
-    all_results += fetch_workday(
-        "cmu", "wd5", "CMU", "CMU-Qatar",
-        "https://cmu.wd5.myworkdayjobs.com/en-US/CMU",
-    )
-    all_results += fetch_workday(
-        "georgetown", "wd1", "Georgetown_Qatar_Careers", "Georgetown Qatar",
-        "https://georgetown.wd1.myworkdayjobs.com/en-US/Georgetown_Qatar_Careers",
-    )
-    all_results += fetch_qcri()
-    all_results += fetch_generic_text_search("https://www.hbku.edu.qa/en/careers", "HBKU")
-    all_results += fetch_generic_text_search("https://careers.qu.edu.qa", "Qatar University")
-    all_results += fetch_generic_text_search(
-        "https://nonacademiccareers-udst.icims.com/jobs/search", "UDST"
-    )
+    print("\n--- Per-source match counts ---")
+    for name, fn in sources:
+        res = fn()
+        print(f"{name}: {len(res)} matches")
+        all_results += res
+    print("--------------------------------\n")
     return all_results
 
 
@@ -164,6 +172,11 @@ def main():
         if jid in existing:
             existing[jid]["last_seen"] = now
             existing[jid]["status"] = "open"
+            # backfill any fields that were missing/blank on earlier runs
+            # (e.g. posted_on wasn't captured before this fix went in)
+            for k, v in job.items():
+                if v and not existing[jid].get(k):
+                    existing[jid][k] = v
         else:
             existing[jid] = {**job, "id": jid, "first_seen": now, "last_seen": now, "status": "open"}
             new_count += 1
