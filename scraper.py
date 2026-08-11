@@ -70,6 +70,7 @@ def fetch_workday(tenant, wd_host, site, institution, base_apply_url):
                         "institution": institution,
                         "title": title,
                         "url": url,
+                        "posted_on": p.get("postedOn", ""),
                     })
             total = data.get("total", 0)
             offset += limit
@@ -92,7 +93,7 @@ def fetch_qcri():
             title = a.get_text(strip=True)
             if title and matches_keywords(title):
                 href = urljoin(url, a["href"])
-                results.append({"institution": "QCRI", "title": title, "url": href})
+                results.append({"institution": "QCRI", "title": title, "url": href, "posted_on": ""})
     except Exception as e:
         print(f"[WARN] QCRI fetch failed: {e}", file=sys.stderr)
     return results
@@ -112,7 +113,7 @@ def fetch_generic_text_search(url, institution):
             title = a.get_text(strip=True)
             if title and matches_keywords(title):
                 href = urljoin(url, a["href"])
-                results.append({"institution": institution, "title": title, "url": href})
+                results.append({"institution": institution, "title": title, "url": href, "posted_on": ""})
     except Exception as e:
         print(f"[WARN] Generic fetch failed for {institution} ({url}): {e}", file=sys.stderr)
     return results
