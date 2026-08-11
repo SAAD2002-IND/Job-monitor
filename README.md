@@ -1,45 +1,46 @@
-# Qatar Education City Job Monitor
+# qatar-job-monitor
 
-Checks CMU-Qatar, Georgetown Qatar, QCRI, HBKU, Qatar University, and UDST
-daily for postings matching a fixed keyword list (Research Assistant,
-Teaching Assistant, Statistician, Data Analyst, etc.), and shows results
-on a simple webpage with a "new since last visit" notification bar.
+I kept missing the CMU-Q Teaching Assistant reopening (twice now 🙃) so I built this
+to stop relying on remembering to check job boards. It scrapes a handful of Qatar
+university/research career pages every day and flags anything new that matches
+roles I'm actually going for — RA, TA, data analyst, that kind of thing.
 
-## Setup (one-time, ~10 minutes)
+Live page: `https://<your-username>.github.io/job-monitor/` (update this link once you know it)
 
-1. **Create a new GitHub repository** (e.g. `qatar-job-monitor`), public or private — either works with GitHub Pages on a free personal account.
-2. **Upload these files** to the repo, keeping the folder structure exactly as-is (the `.github/workflows/monitor.yml` path matters).
-3. **Turn on write permissions for Actions:**
-   Repo → Settings → Actions → General → "Workflow permissions" → select **Read and write permissions** → Save.
-4. **Enable GitHub Pages via Actions:**
-   Repo → Settings → Pages → Source → select **GitHub Actions**.
-5. **Run it once manually to seed the data:**
-   Repo → Actions tab → "Qatar Job Monitor" workflow → **Run workflow**.
-   Wait ~1 minute, then check the Actions tab for a green checkmark.
-6. **Find your page URL:**
-   Repo → Settings → Pages will show something like
-   `https://<your-username>.github.io/qatar-job-monitor/` — bookmark that.
+## How it works
 
-After this, it re-runs automatically every day at 05:00 UTC (~08:00 Doha
-time). Visit the page whenever you like; the yellow bar at the top tells
-you how many new matches appeared since your last visit, and clicking
-"Mark all as read" clears it.
+A python script (`scraper.py`) hits a few career sites once a day via GitHub Actions,
+checks titles against a keyword list, and saves results to `data/jobs.json`. The
+webpage (`index.html`) just reads that file and shows a little yellow banner if
+anything's new since your last visit.
 
-## Known limitations (be honest with yourself about these)
+## Setup
 
-- **CMU-Qatar and Georgetown Qatar** are queried through Workday's own
-  API, so these two are reliable — if CMU-Q's Teaching Assistant role
-  reopens, this will catch it the same day the workflow runs.
-- **QCRI** is a plain HTML page and should also be reliable.
-- **HBKU, Qatar University, and UDST** render their job lists with
-  JavaScript that a simple script can't execute, so the scraper does a
-  best-effort text search on the raw page and may miss postings on these
-  three. Zero results from them means "inconclusive," not "no jobs" —
-  worth glancing at their portals yourself every couple of weeks:
-  - hbku.edu.qa/en/careers
-  - careers.qu.edu.qa
-  - nonacademiccareers-udst.icims.com/jobs/search
-- The keyword list lives at the top of `scraper.py` — edit it any time
-  your target roles change.
-- If a workflow run fails, check the Actions tab for the error log
-  (most likely cause: a site changed its page structure).
+1. Push this repo to GitHub (already done if you're reading this here)
+2. Settings → Actions → General → give it "Read and write permissions"
+3. Settings → Pages → Source → GitHub Actions
+4. Actions tab → run the workflow once manually to seed the data
+5. Grab your Pages URL from Settings → Pages
+
+After that it just runs itself, once a day.
+
+## Sources
+
+CMU-Qatar, Georgetown Qatar, and Texas A&M Qatar are pulled straight from their
+Workday API so those are solid. QCRI, HBKU, Qatar University and UDST are more of
+a best-effort thing — their job listings load with JavaScript which a simple script
+can't run, so don't be surprised if those stay at 0 matches. Worth checking those
+four by hand every couple weeks:
+
+- hbku.edu.qa/en/careers
+- careers.qu.edu.qa
+- nonacademiccareers-udst.icims.com/jobs/search
+- cs.qcri.org/jobs
+
+LinkedIn and Indeed aren't scraped here on purpose (against their ToS) — there are
+quick-search links on the page instead.
+
+## Editing the keyword list
+
+It's just a list at the top of `scraper.py`. Add/remove whatever titles you're
+targeting and it'll pick them up next run.
