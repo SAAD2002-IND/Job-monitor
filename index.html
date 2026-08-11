@@ -76,14 +76,20 @@ function render(jobs, newIds) {
     return;
   }
 
-  list.innerHTML = shown.map(j => `
+  list.innerHTML = shown.map(j => {
+    const posted = j.posted_on ? j.posted_on : "date not available";
+    const closedLine = j.status === "closed" && j.closed_on
+      ? ` · closed ${new Date(j.closed_on).toLocaleDateString()}`
+      : "";
+    return `
     <div class="job ${newIds.has(j.id) ? "new" : ""}">
       <a class="title-link" href="${j.url}" target="_blank" rel="noopener">${j.title}</a>
       ${newIds.has(j.id) ? '<span class="badge">NEW</span>' : ""}
       ${j.status === "closed" ? '<span class="badge closed">CLOSED</span>' : ""}
-      <div class="meta">${j.institution} · first seen ${new Date(j.first_seen).toLocaleDateString()}</div>
+      <div class="meta">${j.institution} · posted ${posted} · first seen ${new Date(j.first_seen).toLocaleDateString()}${closedLine}</div>
     </div>
-  `).join("");
+  `;
+  }).join("");
 }
 
 load();
