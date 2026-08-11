@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Qatar Education City Job Monitor</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body { font-family: -apple-system, Segoe UI, Roboto, sans-serif; max-width: 900px; margin: 40px auto; padding: 0 16px; background: #fafafa; color: #1a1a1a; }
+  h1 { font-size: 1.4rem; }
+  #notif-bar { display:none; background:#fff4d6; border:1px solid #e8c766; padding:12px 16px; border-radius:8px; margin-bottom:20px; font-weight:600; }
+  .job { background:white; border:1px solid #e2e2e2; border-radius:8px; padding:14px 16px; margin-bottom:10px; }
+  .job.new { border-color:#2a9d5c; box-shadow:0 0 0 2px rgba(42,157,92,0.15); }
+  .badge { display:inline-block; background:#2a9d5c; color:white; font-size:0.7rem; padding:2px 8px; border-radius:999px; margin-left:8px; vertical-align:middle; }
+  .badge.closed { background:#999; }
+  .meta { color:#666; font-size:0.85rem; margin-top:4px; }
+  a.title-link { text-decoration:none; color:#1a1a1a; font-weight:600; }
+  select, button { padding:6px 10px; margin-right:8px; }
+  #controls { margin-bottom: 16px; }
+  footer { margin-top: 30px; font-size: 0.8rem; color: #888; }
+</style>
+</head>
+<body>
+<h1>Qatar Education City Job Monitor</h1>
+<div id="notif-bar"></div>
+<div id="controls">
+  <select id="statusFilter">
+    <option value="open">Open only</option>
+    <option value="all">All (incl. closed)</option>
+  </select>
+  <button id="markSeen">Mark all as read</button>
+</div>
+<div id="list">Loading…</div>
+<footer>
+  Sources checked: CMU-Qatar &amp; Georgetown Qatar (via Workday API, reliable), QCRI (reliable),
+  HBKU / Qatar University / UDST (best-effort — check these manually every couple of weeks too,
+  since their listings are JavaScript-rendered and may not always be caught here).
+  Updates once daily.
+</footer>
+
+<script>
+const LAST_VISIT_KEY = "qatarJobMonitor.lastVisit";
+
+async function load() {
+  const res = await fetch("data/jobs.json?_=" + Date.now());
+  const data = await res.json();
+  const jobs = Object.values(data).sort((a, b) => new Date(b.first_seen) - new Date(a.first_seen));
+
+  const lastVisit = localStorage.getItem(LAST_VISIT_KEY);
+  const newJobs = lastVisit
+    ? jobs.filter(j => j.status === "open" && new Date(j.first_seen) > new Date(lastVisit))
+    : jobs.filter(j => j.status === "open");
+
+  const bar = document.getElementById("notif-bar");
+  if (newJobs.length > 0) {
+    bar.style.display = "block";
+    bar.textContent = `🔔 ${newJobs.length} new matching opening${newJobs.length > 1 ? "s" : ""} since your last visit`;
+  }
+
+  const newIds = new Set(newJobs.map(j => j.id));
+  render(jobs, newIds);
+
+  document.getElementById("statusFilter").addEventListener("change", () => render(jobs, newIds));
+  document.getElementById("markSeen").addEventListener("click", () => {
+    localStorage.setItem(LAST_VISIT_KEY, new Date().toISOString());
+    location.reload();
+  });
+}
+
+function render(jobs, newIds) {
+  const filter = document.getElementById("statusFilter").value;
+  const list = document.getElementById("list");
+  const shown = filter === "open" ? jobs.filter(j => j.status === "open") : jobs;
+
+  if (shown.length === 0) {
+    list.innerHTML = "<p>No matching postings found yet. The monitor runs daily — check back soon.</p>";
+    return;
+  }
+
+  list.innerHTML = shown.map(j => `
+    <div class="job ${newIds.has(j.id) ? "new" : ""}">
+      <a class="title-link" href="${j.url}" target="_blank" rel="noopener">${j.title}</a>
+      ${newIds.has(j.id) ? '<span class="badge">NEW</span>' : ""}
+      ${j.status === "closed" ? '<span class="badge closed">CLOSED</span>' : ""}
+      <div class="meta">${j.institution} · first seen ${new Date(j.first_seen).toLocaleDateString()}</div>
+    </div>
+  `).join("");
+}
+
+load();
+</script>
+</body>
+</html>
