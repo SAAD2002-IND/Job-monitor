@@ -5,7 +5,7 @@
     "url": "https://cmu.wd5.myworkdayjobs.com/en-US/CMU/job/Pittsburgh-PA/Postdoctoral-Research-Associate---College-of-Engineering---Electrical-and-Computer-Engineering_2024962",
     "id": "631d60dff646",
     "first_seen": "2026-08-11T12:31:55.929820+00:00",
-    "last_seen": "2026-08-13T06:08:35.213609+00:00",
+    "last_seen": "2026-08-14T06:06:10.343718+00:00",
     "status": "open",
     "posted_on": "Posted 4 Days Ago"
   },
@@ -16,8 +16,9 @@
     "id": "6f75e7632f48",
     "first_seen": "2026-08-11T12:31:55.929820+00:00",
     "last_seen": "2026-08-13T06:08:35.213609+00:00",
-    "status": "open",
-    "posted_on": "Posted 5 Days Ago"
+    "status": "closed",
+    "posted_on": "Posted 5 Days Ago",
+    "closed_on": "2026-08-14T06:06:10.343718+00:00"
   },
   "6ed49b8cf066": {
     "institution": "CMU-Qatar",
@@ -80,7 +81,7 @@
     "url": "https://georgetown.wd1.myworkdayjobs.com/en-US/Georgetown_Qatar_Careers/job/Qatar/Teaching-Assistant--Temporary-_JR26296",
     "id": "e80014c6e4f3",
     "first_seen": "2026-08-11T12:31:55.929820+00:00",
-    "last_seen": "2026-08-13T06:08:35.213609+00:00",
+    "last_seen": "2026-08-14T06:06:10.343718+00:00",
     "status": "open",
     "posted_on": "Posted 30+ Days Ago"
   },
@@ -91,7 +92,7 @@
     "posted_on": "Posted Today",
     "id": "08c5a2dc96bb",
     "first_seen": "2026-08-13T06:08:35.213609+00:00",
-    "last_seen": "2026-08-13T06:08:35.213609+00:00",
+    "last_seen": "2026-08-14T06:06:10.343718+00:00",
     "status": "open"
   },
   "cd8be70cf3ed": {
@@ -101,7 +102,7 @@
     "posted_on": "Posted Today",
     "id": "cd8be70cf3ed",
     "first_seen": "2026-08-13T06:08:35.213609+00:00",
-    "last_seen": "2026-08-13T06:08:35.213609+00:00",
+    "last_seen": "2026-08-14T06:06:10.343718+00:00",
     "status": "open"
   },
   "f701612b1df0": {
@@ -111,7 +112,7 @@
     "posted_on": "Posted Today",
     "id": "f701612b1df0",
     "first_seen": "2026-08-13T06:08:35.213609+00:00",
-    "last_seen": "2026-08-13T06:08:35.213609+00:00",
+    "last_seen": "2026-08-14T06:06:10.343718+00:00",
     "status": "open"
   },
   "77b14e97fd92": {
@@ -121,7 +122,7 @@
     "posted_on": "Posted Today",
     "id": "77b14e97fd92",
     "first_seen": "2026-08-13T06:08:35.213609+00:00",
-    "last_seen": "2026-08-13T06:08:35.213609+00:00",
+    "last_seen": "2026-08-14T06:06:10.343718+00:00",
     "status": "open"
   }
 }
