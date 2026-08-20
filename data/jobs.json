@@ -94,7 +94,7 @@
     "posted_on": "Posted Today",
     "id": "08c5a2dc96bb",
     "first_seen": "2026-08-13T06:08:35.213609+00:00",
-    "last_seen": "2026-08-19T05:17:59.979726+00:00",
+    "last_seen": "2026-08-20T05:19:28.325017+00:00",
     "status": "open"
   },
   "cd8be70cf3ed": {
@@ -104,7 +104,7 @@
     "posted_on": "Posted Today",
     "id": "cd8be70cf3ed",
     "first_seen": "2026-08-13T06:08:35.213609+00:00",
-    "last_seen": "2026-08-19T05:17:59.979726+00:00",
+    "last_seen": "2026-08-20T05:19:28.325017+00:00",
     "status": "open"
   },
   "f701612b1df0": {
@@ -114,7 +114,7 @@
     "posted_on": "Posted Today",
     "id": "f701612b1df0",
     "first_seen": "2026-08-13T06:08:35.213609+00:00",
-    "last_seen": "2026-08-19T05:17:59.979726+00:00",
+    "last_seen": "2026-08-20T05:19:28.325017+00:00",
     "status": "open"
   },
   "77b14e97fd92": {
@@ -124,7 +124,7 @@
     "posted_on": "Posted Today",
     "id": "77b14e97fd92",
     "first_seen": "2026-08-13T06:08:35.213609+00:00",
-    "last_seen": "2026-08-19T05:17:59.979726+00:00",
+    "last_seen": "2026-08-20T05:19:28.325017+00:00",
     "status": "open"
   },
   "d53720ccbab1": {
@@ -134,7 +134,7 @@
     "posted_on": "Posted Today",
     "id": "d53720ccbab1",
     "first_seen": "2026-08-15T05:13:17.184529+00:00",
-    "last_seen": "2026-08-19T05:17:59.979726+00:00",
+    "last_seen": "2026-08-20T05:19:28.325017+00:00",
     "status": "open"
   },
   "fa60d909a3ec": {
@@ -144,7 +144,7 @@
     "posted_on": "Posted Today",
     "id": "fa60d909a3ec",
     "first_seen": "2026-08-18T05:17:14.971259+00:00",
-    "last_seen": "2026-08-19T05:17:59.979726+00:00",
+    "last_seen": "2026-08-20T05:19:28.325017+00:00",
     "status": "open"
   },
   "9bf132811c77": {
@@ -154,7 +154,27 @@
     "posted_on": "Posted Today",
     "id": "9bf132811c77",
     "first_seen": "2026-08-19T05:17:59.979726+00:00",
-    "last_seen": "2026-08-19T05:17:59.979726+00:00",
+    "last_seen": "2026-08-20T05:19:28.325017+00:00",
+    "status": "open"
+  },
+  "93e115c1569e": {
+    "institution": "CMU-Qatar",
+    "title": "Research Assistant - College of Engineering - Department of Mechanical Engineering",
+    "url": "https://cmu.wd5.myworkdayjobs.com/en-US/CMU/job/Pittsburgh-PA/Research-Assistant---College-of-Engineering---Department-of-Mechanical-Engineering_2024990-1",
+    "posted_on": "Posted Today",
+    "id": "93e115c1569e",
+    "first_seen": "2026-08-20T05:19:28.325017+00:00",
+    "last_seen": "2026-08-20T05:19:28.325017+00:00",
+    "status": "open"
+  },
+  "4d9dc74c09ad": {
+    "institution": "CMU-Qatar",
+    "title": "Research Assistant",
+    "url": "https://cmu.wd5.myworkdayjobs.com/en-US/CMU/job/Doha-Qatar/Research-Assistant_2025013",
+    "posted_on": "Posted Today",
+    "id": "4d9dc74c09ad",
+    "first_seen": "2026-08-20T05:19:28.325017+00:00",
+    "last_seen": "2026-08-20T05:19:28.325017+00:00",
     "status": "open"
   }
 }
