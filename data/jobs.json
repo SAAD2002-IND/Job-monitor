@@ -94,7 +94,7 @@
     "posted_on": "Posted Today",
     "id": "08c5a2dc96bb",
     "first_seen": "2026-08-13T06:08:35.213609+00:00",
-    "last_seen": "2026-08-20T05:19:28.325017+00:00",
+    "last_seen": "2026-08-21T05:20:12.535704+00:00",
     "status": "open"
   },
   "cd8be70cf3ed": {
@@ -104,7 +104,7 @@
     "posted_on": "Posted Today",
     "id": "cd8be70cf3ed",
     "first_seen": "2026-08-13T06:08:35.213609+00:00",
-    "last_seen": "2026-08-20T05:19:28.325017+00:00",
+    "last_seen": "2026-08-21T05:20:12.535704+00:00",
     "status": "open"
   },
   "f701612b1df0": {
@@ -115,7 +115,8 @@
     "id": "f701612b1df0",
     "first_seen": "2026-08-13T06:08:35.213609+00:00",
     "last_seen": "2026-08-20T05:19:28.325017+00:00",
-    "status": "open"
+    "status": "closed",
+    "closed_on": "2026-08-21T05:20:12.535704+00:00"
   },
   "77b14e97fd92": {
     "institution": "CMU-Qatar",
@@ -125,7 +126,8 @@
     "id": "77b14e97fd92",
     "first_seen": "2026-08-13T06:08:35.213609+00:00",
     "last_seen": "2026-08-20T05:19:28.325017+00:00",
-    "status": "open"
+    "status": "closed",
+    "closed_on": "2026-08-21T05:20:12.535704+00:00"
   },
   "d53720ccbab1": {
     "institution": "CMU-Qatar",
@@ -134,7 +136,7 @@
     "posted_on": "Posted Today",
     "id": "d53720ccbab1",
     "first_seen": "2026-08-15T05:13:17.184529+00:00",
-    "last_seen": "2026-08-20T05:19:28.325017+00:00",
+    "last_seen": "2026-08-21T05:20:12.535704+00:00",
     "status": "open"
   },
   "fa60d909a3ec": {
@@ -144,7 +146,7 @@
     "posted_on": "Posted Today",
     "id": "fa60d909a3ec",
     "first_seen": "2026-08-18T05:17:14.971259+00:00",
-    "last_seen": "2026-08-20T05:19:28.325017+00:00",
+    "last_seen": "2026-08-21T05:20:12.535704+00:00",
     "status": "open"
   },
   "9bf132811c77": {
@@ -154,7 +156,7 @@
     "posted_on": "Posted Today",
     "id": "9bf132811c77",
     "first_seen": "2026-08-19T05:17:59.979726+00:00",
-    "last_seen": "2026-08-20T05:19:28.325017+00:00",
+    "last_seen": "2026-08-21T05:20:12.535704+00:00",
     "status": "open"
   },
   "93e115c1569e": {
@@ -164,7 +166,7 @@
     "posted_on": "Posted Today",
     "id": "93e115c1569e",
     "first_seen": "2026-08-20T05:19:28.325017+00:00",
-    "last_seen": "2026-08-20T05:19:28.325017+00:00",
+    "last_seen": "2026-08-21T05:20:12.535704+00:00",
     "status": "open"
   },
   "4d9dc74c09ad": {
@@ -174,7 +176,37 @@
     "posted_on": "Posted Today",
     "id": "4d9dc74c09ad",
     "first_seen": "2026-08-20T05:19:28.325017+00:00",
-    "last_seen": "2026-08-20T05:19:28.325017+00:00",
+    "last_seen": "2026-08-21T05:20:12.535704+00:00",
+    "status": "open"
+  },
+  "ae7f1255dbd0": {
+    "institution": "CMU-Qatar",
+    "title": "Research Assistant - College of Engineering - Department of Mechanical Engineering",
+    "url": "https://cmu.wd5.myworkdayjobs.com/en-US/CMU/job/Pittsburgh-PA/Research-Assistant---College-of-Engineering---Department-of-Mechanical-Engineering_2025014",
+    "posted_on": "Posted Today",
+    "id": "ae7f1255dbd0",
+    "first_seen": "2026-08-21T05:20:12.535704+00:00",
+    "last_seen": "2026-08-21T05:20:12.535704+00:00",
+    "status": "open"
+  },
+  "a891dce5735c": {
+    "institution": "CMU-Qatar",
+    "title": "Postdoctoral Research Associate - College of Engineering - Electrical and Computer Engineering",
+    "url": "https://cmu.wd5.myworkdayjobs.com/en-US/CMU/job/Pittsburgh-PA/Postdoctoral-Research-Associate---College-of-Engineering---Electrical-and-Computer-Engineering_2025010",
+    "posted_on": "Posted Today",
+    "id": "a891dce5735c",
+    "first_seen": "2026-08-21T05:20:12.535704+00:00",
+    "last_seen": "2026-08-21T05:20:12.535704+00:00",
+    "status": "open"
+  },
+  "1ab7931672d8": {
+    "institution": "CMU-Qatar",
+    "title": "Research Associate - School of Computer Science - S3D",
+    "url": "https://cmu.wd5.myworkdayjobs.com/en-US/CMU/job/Pittsburgh-PA/Research-Associate---School-of-Computer-Science---S3D_2024989",
+    "posted_on": "Posted Today",
+    "id": "1ab7931672d8",
+    "first_seen": "2026-08-21T05:20:12.535704+00:00",
+    "last_seen": "2026-08-21T05:20:12.535704+00:00",
     "status": "open"
   }
 }
